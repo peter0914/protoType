@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>Team Make</title>
+<style>
+body {
+	background-color: #E0FFFF;
+}
+
+div {
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+}
+
+.box {
+	border: 2px solid #1EDDFF;
+	width: 20%;
+}
+
+.sel {
+	width: 50%;
+	margin: auto;
+}
+
+.mkTeam {
+	width: 50%;
+	margin: auto;
+}
+
+#unSelected {
+	text-align: center;
+	width: 150px;
+	float: left;
+}
+
+#Selected {
+	width: 150px;
+	float: right;
+}
+
+.mentorBox {
+	text-align: center;
+	width: 150px;
+	float: left;
+}
+
+.menteeBox {
+	width: 150px;
+	float: right;
+}
+
+.person {
+	text-decoration: none;
+}
+
+.person:link {
+	color: black;
+}
+
+.person:visited {
+	color: black;
+}
+
+.name {
+	width: 70px;
+	border: 1px solid #1EDDFF;
+	padding: 2px;
+	margin: 5px auto;
+	border-radius: 6px;
+}
+
+.name:hover {
+	padding: 1px;
+	border: 2px solid #1EDDFF;
+}
+</style>
+</head>
+<body>
+	<h1>Mentor 추천</h1>
+	<div class='sel'>
+		<div id='unSelected' class='name_box box'>
+			<div class='boxTitle'>JAVA48기</div>
+			<div id='1' class='name'>
+				<a class='person' href='#'>허태량</a>
+			</div>
+			<div id='2' class='name'>
+				<a class='person' href='#'>한태희</a>
+			</div>
+			<div id='3' class='name'>
+				<a class='person' href='#'>김승범</a>
+			</div>
+			<div id='4' class='name'>
+				<a class='person' href='#'>송재우</a>
+			</div>
+			<div id='5' class='name'>
+				<a class='person' href='#'>황지선</a>
+			</div>
+			<div id='6' class='name'>
+				<a class='person' href='#'>이혜주</a>
+			</div>
+			<div id='7' class='name'>
+				<a class='person' href='#'>좌행복</a>
+			</div>
+			<div id='8' class='name'>
+				<a class='person' href='#'>강성진</a>
+			</div>
+			<div id='9' class='name'>
+				<a class='person' href='#'>한창수</a>
+			</div>
+			<div id='10' class='name'>
+				<a class='person' href='#'>정두리</a>
+			</div>
+			<div id='11' class='name'>
+				<a class='person' href='#'>이현주</a>
+			</div>
+			<div id='12' class='name'>
+				<a class='person' href='#'>전영범</a>
+			</div>
+			<div id='13' class='name'>
+				<a class='person' href='#'>서동일</a>
+			</div>
+			<div id='14' class='name'>
+				<a class='person' href='#'>김종현</a>
+			</div>
+			<div id='15' class='name'>
+				<a class='person' href='#'>이유라</a>
+			</div>
+			<div id='16' class='name'>
+				<a class='person' href='#'>박헌웅</a>
+			</div>
+			<div id='17' class='name'>
+				<a class='person' href='#'>석지오</a>
+			</div>
+			<div id='18' class='name'>
+				<a class='person' href='#'>김성호</a>
+			</div>
+			<div id='19' class='name'>
+				<a class='person' href='#'>유형덕</a>
+			</div>
+			<div id='20' class='name'>
+				<a class='person' href='#'>박용범</a>
+			</div>
+			<div id='21' class='name'>
+				<a class='person' href='#'>노성화</a>
+			</div>
+			<div id='22' class='name'>
+				<a class='person' href='#'>이승진</a>
+			</div>
+			<div id='23' class='name'>
+				<a class='person' href='#'>오송이</a>
+			</div>
+			<div id='24' class='name'>
+				<a class='person' href='#'>이강진</a>
+			</div>
+			<div id='25' class='name'>
+				<a class='person' href='#'>차규원</a>
+			</div>
+			<div id='26' class='name'>
+				<a class='person' href='#'>최일환</a>
+			</div>
+			<div id='27' class='name'>
+				<a class='person' href='#'>유승범</a>
+			</div>
+			<div id='28' class='name'>
+				<a class='person' href='#'>구상현</a>
+			</div>
+			<div id='29' class='name'>
+				<a class='person' href='#'>김세미</a>
+			</div>
+			<div id='30' class='name'>
+				<a class='person' href='#'>노의현</a>
+			</div>
+		</div>
+		<div id='Selected' class='name_box box'>
+			<div class='boxTitle'>추천 Mentor</div>
+		</div>
+		<div class='btnBox'>
+			<button id='procBtn'>멘토설정</button>
+		</div>
+	</div>
+	<div class='mkTeam' style='display: none;'>
+		<div class='box mentorBox box'>멘토박스</div>
+		<div class='box menteeBox box'>멘티박스</div>
+
+		<div class='mentiBtnBox'>
+			<button id='makeBtn'>멘티정하기</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var randomNumber = new Array(15);
+		var menteeMember = new Array(15);
+		var count=0;
+		function shuffle() {
+			var chk = true;
+			for (var i = 0; i < 15; i++) {
+				var rand = parseInt(Math.random() * 15 + 1);
+				chk = true;
+				for (var j = 0; j < i; j++) {
+					if (randomNumber[j] == rand) {
+						i--;
+						chk = false;
+					}
+				}
+				if (chk) {
+					randomNumber[i] = rand;
+				}
+			}
+		}
+		$('.name').click(function() {
+			if ($(this).parent().attr('id') == 'unSelected') {
+				if (($('#Selected > .name').length) < 15) {
+					$(this).appendTo('#Selected');
+					shuffle();
+				}
+			} else {
+				$(this).appendTo('#unSelected');
+			}
+		})
+		$('#procBtn').click(
+				function() {
+					if ($('#Selected > .name').length == 15) {
+						console.log('okok');
+						$('.mkTeam').css('display', '');
+						$('.sel').css('display', 'none');
+						$('#Selected > .name').each(
+								function(index, data) {
+									$('<div>').text($(data).text()).attr(
+											'class', 'name').appendTo(
+											'.mentorBox');
+								});
+						$('#unSelected > .name').each(function(index, data) {
+							menteeMember.push($(data).text());
+						});
+					} else {
+						alert('15명의 멘토를 설정해주세요');
+					}
+				})
+		$('#makeBtn').click(function() {
+			if(count<15){
+			$('<div>').text(menteeMember[randomNumber[count++]+14]).attr('class', 'name').appendTo('.menteeBox');
+			console.log(count, randomNumber[count], menteeMember);
+			}else{
+				alert("멘토-멘티 매칭이 완료되었습니다.");
+			}
+		})
+	</script>
+</body>
+</html>
