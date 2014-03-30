@@ -19,8 +19,18 @@ window.onload = function() {
 			}
 		}
 	}
-	$('.name').click(function(event) {
+	/*$('.name').click(function(event) {
 		event.preventDefault();
+		if ($(this).parent().attr('id') == 'unSelected') {
+			if (($('#Selected > .name').length) < 15) {
+				$(this).appendTo('#Selected');
+				shuffle();
+			}
+		} else {
+			$(this).appendTo('#unSelected');
+		}
+	});*/
+	$('.name').bind('tap', function(){
 		if ($(this).parent().attr('id') == 'unSelected') {
 			if (($('#Selected > .name').length) < 15) {
 				$(this).appendTo('#Selected');
