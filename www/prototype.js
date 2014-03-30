@@ -1,5 +1,5 @@
-$(document).ready(function(){
-	"use strict";
+$.ready(function(){
+	/*"use strict";*/
 	var randomNumber = new Array(15);
 	var menteeMember = new Array(15);
 	var count = 0;
