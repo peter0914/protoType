@@ -19,7 +19,8 @@ window.onload = function() {
 			}
 		}
 	}
-	$('.name').click(function() {
+	$('.name').click(function(event) {
+		event.preventDefault();
 		if ($(this).parent().attr('id') == 'unSelected') {
 			if (($('#Selected > .name').length) < 15) {
 				$(this).appendTo('#Selected');
