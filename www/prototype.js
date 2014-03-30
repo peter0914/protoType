@@ -1,4 +1,4 @@
-window.onload = function() {
+$(document).ready(function(){
 	"use strict";
 	var randomNumber = new Array(15);
 	var menteeMember = new Array(15);
@@ -19,18 +19,8 @@ window.onload = function() {
 			}
 		}
 	}
-	/*$('.name').click(function(event) {
+	$('.name').click(function(event) {
 		event.preventDefault();
-		if ($(this).parent().attr('id') == 'unSelected') {
-			if (($('#Selected > .name').length) < 15) {
-				$(this).appendTo('#Selected');
-				shuffle();
-			}
-		} else {
-			$(this).appendTo('#unSelected');
-		}
-	});*/
-	$('.name').bind('tap', function(){
 		if ($(this).parent().attr('id') == 'unSelected') {
 			if (($('#Selected > .name').length) < 15) {
 				$(this).appendTo('#Selected');
@@ -68,4 +58,4 @@ window.onload = function() {
 					alert("멘토-멘티 매칭이 완료되었습니다.");
 				}
 			});
-};
+});
