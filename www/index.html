@@ -5,81 +5,8 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Team Make</title>
-<style>
-body {
-	background-color: #E0FFFF;
-}
-
-div {
-	text-align: center;
-}
-
-h1 {
-	text-align: center;
-}
-
-.box {
-	border: 2px solid #1EDDFF;
-	width: 20%;
-}
-
-.sel {
-	width: 100%;
-	margin: auto;
-}
-
-.mkTeam {
-	width: 100%;
-	margin: auto;
-}
-
-#unSelected {
-	text-align: center;
-	width: 30%;
-	float: left;
-}
-
-#Selected {
-	width: 30%;
-	float: right;
-}
-
-.mentorBox {
-	text-align: center;
-	width: 30%;
-	float: left;
-}
-
-.menteeBox {
-	width: 30%;
-	float: right;
-}
-
-.person {
-	text-decoration: none;
-}
-
-.person:link {
-	color: black;
-}
-
-.person:visited {
-	color: black;
-}
-
-.name {
-	width: 70px;
-	border: 1px solid #1EDDFF;
-	padding: 2px;
-	margin: 5px auto;
-	border-radius: 6px;
-}
-
-.name:hover {
-	padding: 1px;
-	border: 2px solid #1EDDFF;
-}
-</style>
+<link type="text/css" rel="stylesheet" href="prototype.css" />
+<script type="text/javascript" src="prototype.js"></script>
 </head>
 <body>
 	<h1>Mentor 추천</h1>
@@ -192,63 +119,5 @@ h1 {
 			<button id='makeBtn'>멘티정하기</button>
 		</div>
 	</div>
-	<script type="text/javascript">
-		var randomNumber = new Array(15);
-		var menteeMember = new Array(15);
-		var count=0;
-		function shuffle() {
-			var chk = true;
-			for (var i = 0; i < 15; i++) {
-				var rand = parseInt(Math.random() * 15 + 1);
-				chk = true;
-				for (var j = 0; j < i; j++) {
-					if (randomNumber[j] == rand) {
-						i--;
-						chk = false;
-					}
-				}
-				if (chk) {
-					randomNumber[i] = rand;
-				}
-			}
-		}
-		$('.name').click(function() {
-			if ($(this).parent().attr('id') == 'unSelected') {
-				if (($('#Selected > .name').length) < 15) {
-					$(this).appendTo('#Selected');
-					shuffle();
-				}
-			} else {
-				$(this).appendTo('#unSelected');
-			}
-		})
-		$('#procBtn').click(
-				function() {
-					if ($('#Selected > .name').length == 15) {
-						console.log('okok');
-						$('.mkTeam').css('display', '');
-						$('.sel').css('display', 'none');
-						$('#Selected > .name').each(
-								function(index, data) {
-									$('<div>').text($(data).text()).attr(
-											'class', 'name').appendTo(
-											'.mentorBox');
-								});
-						$('#unSelected > .name').each(function(index, data) {
-							menteeMember.push($(data).text());
-						});
-					} else {
-						alert('15명의 멘토를 설정해주세요');
-					}
-				})
-		$('#makeBtn').click(function() {
-			if(count<15){
-			$('<div>').text(menteeMember[randomNumber[count++]+14]).attr('class', 'name').appendTo('.menteeBox');
-			console.log(count, randomNumber[count], menteeMember);
-			}else{
-				alert("멘토-멘티 매칭이 완료되었습니다.");
-			}
-		})
-	</script>
 </body>
 </html>
